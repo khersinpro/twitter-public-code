@@ -1,0 +1,45 @@
+if tweets
+    each tweet in tweets 
+        div(class="tweet-card"  tweetid=tweet._id )
+            div(class="card-body" )
+                div(class='editable-card')
+                    div(class="tweet-avatar-container")
+                        img(src=tweet.author.avatar)
+                    div(class="tweet-user-infos")    
+                        p(class="user-infos-pseudo")= tweet.author.username
+                        P(class="user-infos-date") Le #[= new Date(tweet.createdAt).toLocaleDateString()] à #[= new Date(tweet.createdAt).toLocaleTimeString()]
+                    if editable && tweet.author._id.toString() === currentUser._id.toString()
+                        div(class="editable")
+                            a(class="fa-solid fa-file-pen btn-modify" href="/tweets/edit/" + tweet._id)
+                            i(class="fa-solid fa-circle-minus btn-delete text-danger" tweetid=tweet._id)
+                div(class="tweet-content")
+                    p= tweet.content
+                if tweet.image
+                    div(class='tweet-cotent-image')
+                        img(src=tweet.image alt="tweet post image")
+            div(class="likes-coms-length")
+                div(class="likes-length") 
+                    i(class="fa-solid fa-thumbs-up")
+                    p #[= tweet.likes.length] likes
+                p(class="coms-length") #[= tweet.nbofcoms] commentaires
+            div(class="tweet-stats")
+                div(class="tweet-stats-likes stats-container" tweetid=tweet._id)
+                    if tweet.likes.includes(currentUser._id)
+                        i(class="fa-solid fa-heart heart-liked" )
+                        p Je n'aime plus 
+                    else
+                        i(class="fa-regular fa-heart")
+                        p J'aime
+                div(class="tweet-stats-coms stats-container" tweetid=tweet._id)
+                    i(class="fa-regular fa-comments")
+                    p Commenter
+            div(class='com-container')
+            div(class='form-container')
+                div(class="form-container-currentAvatar")
+                    img(src=currentUser.avatar alt="current user avatar")
+                input(class="new-com-input" type="text" placeholder="Nouveau commentaire" tweetid=tweet._id)
+                button(class="new-com-btn" type="submit" tweetid=tweet._id) Send       
+    else 
+        h3(class="tweets-not-found")  Aucun tweet a afficher...  
+
+

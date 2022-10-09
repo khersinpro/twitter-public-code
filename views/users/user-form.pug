@@ -1,0 +1,21 @@
+extends ../layout.pug 
+
+block content 
+    script(src="/javascript/sign-form/signup-form.js")
+    div(class="auth-container")
+        form(class="auth-form")
+            h1(class="auth-title") Inscription 
+            div(class="auth-input-container")
+                label(for="username-signup") Username 
+                input(class='form-control' type="text" name="username" id="username-signup")
+                p(class="username-error auth-error")
+            div(class="auth-input-container")
+                label(for="email-signup") Email
+                input(class='form-control' type="email" name="email" id="email-signup")
+                p(class="email-error auth-error")
+            div(class="auth-input-container")
+                label(for="password-signup") Mot de passe 
+                input(class='form-control' type="password" name="password" id="password-signup")
+                p(class="password-error auth-error")
+            div(class="auth-submit-container signup")
+                input(type="submit" value="Inscription" )

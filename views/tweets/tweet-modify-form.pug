@@ -1,0 +1,32 @@
+extends ../layout.pug 
+
+block content 
+        script(src='/javascript/tweets/tweet-modify.js')
+        div(class="main-container")
+            include ../includes/profile.pug
+            div(class="tweet-form")
+                form(class="card" id="tweet-form-modify")
+                    div(class="card-header")
+                        p Modifier mon tweet
+                    div(class="card-body")
+                        div(class="tweet-form-textareaContainer")
+                            textarea(class="tweet-form-textarea" name="content" placeholder='What is happening')= tweet.content
+                        if tweet.image 
+                            div(class="card-img-container")
+                                div(class="modify-form-img")
+                                    button(id="delete-actual-tweet-img" type='button' aria-label="Supprimer la photo du tweet")
+                                        i(class="fa-solid fa-trash")
+                                    img(id='actual-tweet-image' src=tweet.image)
+                        div(class="card-img-container")
+                            div(class="modify-form-img")            
+                                img(id='file-preview')            
+                        div(class="tweet-submit")
+                            label(for="tweet-new-image")
+                                i(class="fa-solid fa-cloud-arrow-up")
+                                |Modifier 
+                            input(type="file" accept="image/*" id='tweet-new-image')
+                            input(type="submit" value="send" class="btn btn-primary ml-auto d-block" )
+                    ul(class="error-list")            
+            div(class='chat-list')
+                include ../includes/chat-list.pug    
+            include ../includes/footer-bar.pug            

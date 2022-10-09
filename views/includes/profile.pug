@@ -1,0 +1,50 @@
+script( defer src="/javascript/profile.js") 
+div(class="profile-container" ) 
+    
+    if currentUser._id.toString() === user._id.toString() 
+        div(class="profile-container-avatar")
+            div(class="user-container-hidden")
+                img(src=user.avatar id="image-profile")
+            form(action='users/update/image' method="post" enctype='multipart/form-data' id='form-container')
+                <i class="fa-solid fa-camera"></i>
+                input(type="file" name='avatar' accept="image/*" id='input-avatar' )
+    else 
+        div(class="profile-container-avatar")
+            div(class="user-container-hidden")
+                img(src=user.avatar id="image-profile")
+
+    div(class="profile-container-infos")
+        if currentUser._id.toString() === user._id.toString() 
+            p= `Bienvenue ${user.username}`
+        else    
+            p= `Profil de ${user.username}`
+        if user.local.emailVerified
+            span(class="span-follow") Utilisateur verifié 
+        else 
+            span(class="span-notVerified") Utilisateur non verifié 
+
+    if currentUser._id.toString() !== user._id.toString()   
+        div(class="open-conversation" user=user.username)      
+            i(class="fa-solid fa-envelope" )
+            p Ouvrir une conversation
+
+    div(class="follow-container")
+        div(class="follow-container-boxs")
+            p 
+                strong Tweet 
+                br 
+                if currentUser._id.toString() !== user._id.toString() 
+                    span(class="span-follow")= tweets && tweets.filter(t => t.author._id.toString() === user._id.toString() ).length  
+                else    
+                    span(class="span-follow")= tweets && tweets.filter(t => t.author._id.toString() === currentUser._id.toString() ).length  
+        div(class="follow-container-boxs")
+            p
+                strong Following 
+                br
+                span(class="span-follow")= user.following.length      
+    if currentUser._id.toString() !== user._id.toString()    
+        div(class="d-flex flex-row justify-content-center align-items-center my-3")
+            if currentUser.following.map(follow => follow.toString()).includes(user._id.toString())
+                a(class="btn-unfollow" href=`/users/unfollow/${user._id}`) Unfollow
+            else
+                a(class="btn-follow" href=`/users/follow/${user._id}`) Follow

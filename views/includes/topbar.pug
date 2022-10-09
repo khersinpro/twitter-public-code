@@ -1,0 +1,25 @@
+script(defer src='/javascript/search-bar.js')
+if isAuthenticated 
+    nav()
+        a(class="navbar-logo" href="/tweets")
+            img(width='30' height="30" src="/images/twitter.png")
+        div(class="navbar-container")
+            form
+                input(type="text" placeholder="Search" id="searchInput")
+                div(id="search-menu-container")
+                    include ./search-menu.pug 
+            ul(class="navbar-nav")
+                li(class="nav-item")
+                    a(class="btn-tweet" href="/tweets/tweet/new") Tweet
+                li(class="nav-item")
+                    a(class="btn-dc" href="/auth/signout") Deconnexion
+else    
+    nav(class="sign-nav")
+        a(class="navbar-logo" href="/tweets")
+            img(width='30' height="30" src="/images/twitter.png")
+        div(class="navbar-sign-container")
+            ul(class="navbar-sign-nav")
+                li(class="nav-sign-item")
+                    a(class="nav-sign-link " href="/auth/signin/form") Connexion
+                li(class="nav-sign-item")
+                    a(class="nav-sign-link " href="/users/signup/form") Inscription

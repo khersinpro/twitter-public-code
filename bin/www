@@ -1,0 +1,20 @@
+const fs = require('fs');
+const http = require('http');
+const https = require('https');
+const app = require('../app')
+const envMethod = `../environment/${process.env.NODE_ENV}.js`.replace(/ /g, "");
+const env = require(envMethod);
+const { initSocketServer } = require('../config/socket.config')
+
+// Redirection vers le serveur https
+const httpServer= http.createServer((req, res) => {
+    res.writeHead(301, { Location: `https://${ req.headers.host}${ req.url }` });
+    res.end()
+}).listen(80);
+
+const httpsServer = https.createServer({
+    key: fs.readFileSync(env.key),
+    cert: fs.readFileSync(env.cert)
+}, app).listen(443);
+
+initSocketServer(httpsServer);

@@ -1,0 +1,28 @@
+/* nav open buttons for mobile */
+.open-profile-menus{
+    display: none;
+}
+/* end  open buttons for mobile*/
+@media (max-width: 992px) {
+    /* button for open profil */
+    .open-profile-menus{
+        display: flex;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.164);
+        position: fixed;
+        bottom: -1px;
+        left: 0px;
+        z-index: 3;
+    }
+    .open-profile-menus button{
+        height: 28px;
+        width: 50%;
+        background-color: #495057;
+        color: white;
+        border: none;
+        font-weight: 500;
+    }
+    .open-profile-menus button:hover{
+        cursor: pointer;
+    }
+}

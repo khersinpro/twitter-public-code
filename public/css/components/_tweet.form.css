@@ -1,0 +1,147 @@
+.tweet-form{
+    width: 90%;
+    max-width: 600px;
+    margin-top: 10px;
+}
+.tweet-form form{
+    width: 100%;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px rgba(80, 75, 75, 0.25), 0 1px 2px rgba(80, 75, 75, 0.25);
+    padding-bottom: 10px;
+}
+.card-header{
+    border-bottom: 0.5px solid black;
+    background: rgba(0, 0, 0, 0.03);
+    height: 38px;
+    padding: 0 25px;
+    display: flex;
+    align-items: center;
+}
+.card-header p {
+    display: block;
+    color: #4e5166;
+    font-weight: 500;
+}
+
+.card-body textarea{
+    width: 100%;
+    min-height: 80px;
+    resize: none;
+    padding: 15px;
+    font-size: 17px;
+    font-weight: 400;
+    border: none;
+    border-bottom: 1px solid black;
+}
+.card-body textarea:focus{
+    outline: none;
+    border-bottom: 2px solid black;
+    border-top: 1px solid black;
+}
+.tweet-submit{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 10px 10px;
+}
+.tweet-submit label{
+    display: block;
+    height: 38px;
+    width: 110px;
+    border: none;
+    color: white;
+    background-color: #4db6ac;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tweet-submit label i {
+    margin-right: 10px;
+}
+#tweet-new-image{
+    display: none;
+}
+.tweet-submit input[type="submit"]{
+    display: block;
+    height: 38px;
+    width: 110px;
+    border: none;
+    color: white;
+    background-color: var(--blue);
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 500;
+}
+/* Modify tweet  */
+/* actual image delete style */
+.card-img-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: black;
+}
+.modify-form-img{
+    max-width: 100%;
+    max-height: 350px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+#delete-actual-tweet-img{
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    height: 30px;
+    width: 30px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    border: 1px solid white;
+    transition: 0.3s;
+}
+#delete-actual-tweet-img:hover{
+    cursor: pointer;
+    background-color: white;
+    color: red;
+    border-radius: 50%;
+    border: 1px solid red;
+    transition: 0.3s;
+}
+#actual-tweet-image{
+    width: auto;
+    object-fit: cover;
+    height: 100%;
+    max-height: 350px; 
+}
+#file-preview{
+    width: auto;
+    max-width: 100%;
+    object-fit: cover;
+    height: 100%;
+    max-height: 350px; 
+}
+.form-error{
+    text-align: center;
+    margin: 5px 0 ;
+    font-weight: 500;
+    color: red;
+}
+@media (max-width: 492px) {
+    .tweet-form{
+        width: 98%;
+        max-width: 600px;
+        margin-top: 10px;
+    }
+    .tweet-form form{
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    }
+}
